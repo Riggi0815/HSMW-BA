@@ -4,6 +4,7 @@ public class CameraFollow : MonoBehaviour
 {
 
     [SerializeField] Transform target;
+    [SerializeField] float z;
     [SerializeField] float smoothSpeed = 0.125f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +17,6 @@ public class CameraFollow : MonoBehaviour
     {
         Vector2 targetPosition = target.position;
         Vector2 smoothedPosition = Vector2.Lerp(transform.position, targetPosition, smoothSpeed);
-        transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, -10f);
+        transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, z);
     }
 }

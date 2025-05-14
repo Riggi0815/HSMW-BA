@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4396603484411791468}
   - component: {fileID: 2882604831780156374}
-  - component: {fileID: 7324472671433757583}
   - component: {fileID: 4847269752977111896}
   m_Layer: 3
   m_Name: SprayEnemie
@@ -76,22 +75,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &7324472671433757583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127127656910504264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 259548e5edfd6fd42a64b3d99a54c756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  expAmount: 10
-  healthBar: {fileID: 3645411322852317995}
 --- !u!114 &4847269752977111896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  expAmount: 0
+  expAmount: 50
   healthBar: {fileID: 3645411322852317995}
   speed: 1
   patrolRange: 0
@@ -116,7 +99,7 @@ MonoBehaviour:
   player: {fileID: 0}
   walkPointSet: 0
   currentEnemyType: 1
-  bulletPrefab: {fileID: 935207571025236438, guid: a846bef0356a6cc4c9da5d75a26472d1, type: 3}
+  bulletPrefab: {fileID: 935207571025236438, guid: 13cbf5572530cb0499e10e459b491922, type: 3}
   firePoints:
   - {fileID: 4154274618217659577}
   - {fileID: 7684968285695830313}
@@ -147,13 +130,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3205000946113157577}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.155, y: 0.155, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: -0.15499869, y: 0.15500247, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4559602897365706820}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!1 &4167639910550383432
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,13 +161,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4167639910550383432}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0.155, y: 0.155, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4559602897365706820}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!1 &4720173023424271842
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,13 +355,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7000140957278980763}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.155, y: -0.155, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.92387956, w: 0.38268343}
+  m_LocalPosition: {x: -0.15499869, y: -0.15500526, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4559602897365706820}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
 --- !u!1 &8016056706760625268
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,13 +386,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8016056706760625268}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.92387956, w: 0.38268343}
   m_LocalPosition: {x: 0.155, y: -0.155, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4559602897365706820}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
 --- !u!1001 &5329810666711522517
 PrefabInstance:
   m_ObjectHideFlags: 0

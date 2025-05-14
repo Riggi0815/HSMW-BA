@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2d711a0b8b55e4f80ac9817cc31be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 50
+  isBulletTracing: 1
 --- !u!50 &5051879028847395779
 Rigidbody2D:
   serializedVersion: 5
@@ -110,7 +111,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.23
+  m_Radius: 1
 --- !u!1 &6765883669383368957
 GameObject:
   m_ObjectHideFlags: 0

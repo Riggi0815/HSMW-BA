@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4396603484411791468}
   - component: {fileID: 571984410885077117}
   - component: {fileID: 2882604831780156374}
-  - component: {fileID: 7324472671433757583}
   - component: {fileID: -1923716623904506681}
   - component: {fileID: 4567907909926606180}
   m_Layer: 3
@@ -133,22 +132,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!114 &7324472671433757583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127127656910504264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 259548e5edfd6fd42a64b3d99a54c756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  expAmount: 10
-  healthBar: {fileID: 3645411322852317995}
 --- !u!114 &-1923716623904506681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +151,7 @@ MonoBehaviour:
   speed: 2
   patrolRange: 5
   attackRange: 0
+  attackSpeed: 0
   attackDamage: 20
   player: {fileID: 0}
   walkPointSet: 0
@@ -391,14 +375,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7362974638694658998, guid: 875334b82ef220d4caa1120b18ff815a, type: 3}
   m_PrefabInstance: {fileID: 5329810666711522517}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3645411322852317995 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8890194556220409854, guid: 875334b82ef220d4caa1120b18ff815a, type: 3}
-  m_PrefabInstance: {fileID: 5329810666711522517}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d537e2d1123f43a40af8a767e809e791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

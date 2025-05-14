@@ -6,7 +6,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
-    [SerializeField] private int expAmount;
+    public int expAmount;
     private float minHealth = 0f;
     [SerializeField] private FloatingHealthBar healthBar;
 
@@ -53,7 +53,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         {
             case enemyType.Melee:
                 transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
-                Debug.Log(Vector2.Distance(transform.position, player.position) < attackRange);
                 break;
             case enemyType.Ranged:
                     if (!walkPointSet)
@@ -73,7 +72,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
                     if (distanceToWalkPoint.magnitude < 0.2f)
                     {
-                        Debug.Log("Walkpoint reached");
                         Attack();
                         walkPointSet = false;
                     }

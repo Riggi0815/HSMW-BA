@@ -21,6 +21,7 @@ public class ExplosionEnemy : Enemy
     public override void Die()
     {
         Destroy(gameObject);
+        ExpManager.Instance.AddExp(expAmount);
         CheckEnemyCount();
     }
 }

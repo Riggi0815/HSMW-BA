@@ -3,11 +3,14 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float damage;
+    
+
     public float Damage
     {
         get { return damage; }
         set { damage = value; }
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         IDamageable hit = other.GetComponent<IDamageable>();
@@ -18,8 +21,6 @@ public class Bullet : MonoBehaviour
         }
         
         // Destroy the arrow when it collides with an enemy
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
-
-    
 }
