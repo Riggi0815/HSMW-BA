@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     [SerializeField] private ExpBar expBar;
 
     public float Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public float CurrentLvl => currentLvl;
 
     public event Action<float> OnLevelUp;
     public event Action<float, float> OnExpUpdate;

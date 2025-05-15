@@ -204,7 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
-  expAmount: 20
+  expAmount: 100
   healthBar: {fileID: 0}
   speed: 3
   patrolRange: 0
