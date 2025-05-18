@@ -11,6 +11,10 @@ public class Bullet : MonoBehaviour
         set { damage = value; }
     }
 
+    private void Start() {
+         Physics2D.IgnoreLayerCollision(6, 8);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         IDamageable hit = other.GetComponent<IDamageable>();

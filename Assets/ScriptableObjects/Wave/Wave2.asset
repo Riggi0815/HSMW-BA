@@ -12,12 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652152d2ae750c947a66e38b25b68a19, type: 3}
   m_Name: Wave2
   m_EditorClassIdentifier: 
-  waveNumber: 0
-  enemies:
-  - enemyPrefab: {fileID: 1127127656910504264, guid: 7ba1f5cfe68ff874a8b4a8cbeb4a511f, type: 3}
-    enemyCount: 1
-  - enemyPrefab: {fileID: 1127127656910504264, guid: a09c0946c3469b64f9abec6f36d5fa09, type: 3}
-    enemyCount: 3
-  - enemyPrefab: {fileID: 1127127656910504264, guid: 7899ddb2d9edc2d459af41532b15bfc5, type: 3}
-    enemyCount: 5
+  waveNumber: 2
   spawnTime: 1
+  explosionEnemyPrefab: {fileID: 1127127656910504264, guid: 7ba1f5cfe68ff874a8b4a8cbeb4a511f, type: 3}
+  explosionEnemyCount: 6
+  eEMaxHealth: 350
+  eESpeed: 3.2
+  eEAttackDamage: 35
+  shootingEnemyPrefab: {fileID: 1127127656910504264, guid: a09c0946c3469b64f9abec6f36d5fa09, type: 3}
+  shootingEnemyCount: 4
+  shEMaxHealth: 220
+  shESpeed: 3.2
+  shEAttackDamage: 22
+  shEProjectileSpeed: 11
+  sprayEnemyPrefab: {fileID: 1127127656910504264, guid: 7899ddb2d9edc2d459af41532b15bfc5, type: 3}
+  sprayEnemyCount: 3
+  spEMaxHealth: 120
+  spESpeed: 2.1
+  spEAttackDamage: 12
+  spEAttackSpeed: 0.55
+  spEProjectileSpeed: 11

@@ -68,7 +68,7 @@ public class Spawner : MonoBehaviour
         Vector2 randomPosition = Random.insideUnitCircle * spawnRadius;
         
         int index = Random.Range(0, objectsToSpawn.Count);
-        Instantiate(objectsToSpawn[index], randomPosition, Quaternion.identity, this.transform);
+        GameObject obj = Instantiate(objectsToSpawn[index], randomPosition, Quaternion.identity, this.transform);
         objectsToSpawn.RemoveAt(index);
     }
 

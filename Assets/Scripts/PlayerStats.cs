@@ -9,6 +9,8 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     [SerializeField] private FloatingHealthBar healthBar;
     [SerializeField] private ExpBar expBar;
+    [SerializeField] private GameObject playerBullet;
+    [SerializeField] private AutoWeapon autoWeapon;
 
     public float Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public float CurrentLvl => currentLvl;
@@ -27,13 +29,14 @@ public class PlayerStats : MonoBehaviour, IDamageable
         ExpManager.Instance.OnExpChange -= HandleExpChange;
     }
 
-    private void Awake() {
+    private void Awake()
+    {
         healthBar = GetComponentInChildren<FloatingHealthBar>();
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 
     private void HandleExpChange(int amount)
-    { 
+    {
         Debug.Log("Exp Changed: " + amount);
         //Handle the experience change
         currentExp += amount;
@@ -57,11 +60,28 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
         OnLevelUp?.Invoke(currentLvl);
         OnExpUpdate?.Invoke(currentExp, maxExp);
+        if (currentLvl == 2)
+        {
+            playerBullet.GetComponent<PlayerBullet>().Damage = 30;
+        }
+
+        if (currentLvl == 3)
+        {
+            autoWeapon.ReloadSpeed = .5f;
+        }
     }
 
     public void Damage(float damageAmount)
     {
         currentHealth -= damageAmount;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            LevelUp();
+        }
     }
 }

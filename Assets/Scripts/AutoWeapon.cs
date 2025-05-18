@@ -10,14 +10,24 @@ public class AutoWeapon : MonoBehaviour
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] PlayerStats playerStats;
 
+    [SerializeField] Transform currentTarget;
+
     float reloadTimer = 0f;
+    
+    public float ReloadSpeed
+    {
+        get { return reloadSpeed; }
+        set { reloadSpeed = value; }
+    }
 
 
-    private void Update() {
+    private void Update()
+    {
         reloadTimer += Time.deltaTime;
 
-        if (reloadTimer >= reloadSpeed && weaponManager.LockedOnEnemy) {
-            
+        if (reloadTimer >= reloadSpeed && weaponManager.LockedOnEnemy)
+        {
+
             reloadTimer = 0f; // Reset the timer 
             // Fire the projectile
             FireProjectile();
@@ -25,15 +35,18 @@ public class AutoWeapon : MonoBehaviour
     }
 
     void FireProjectile() {
-        if (playerStats.CurrentLvl >= 2) {
+        if (playerStats.CurrentLvl >= 4) {
             GameObject newProjectileStraight = Instantiate(projectilePrefab, transform.position, transform.rotation);
             GameObject newProjectileLeft = Instantiate(projectilePrefab, transform.position, transform.rotation * Quaternion.Euler(0, 0, 30));
             GameObject newProjectileRight = Instantiate(projectilePrefab, transform.position, transform.rotation * Quaternion.Euler(0, 0, -30));
+            newProjectileStraight.GetComponent<PlayerBullet>().Target = currentTarget;
+            newProjectileLeft.GetComponent<PlayerBullet>().Target = currentTarget;
+            newProjectileRight.GetComponent<PlayerBullet>().Target = currentTarget;
             newProjectileStraight.GetComponent<Rigidbody2D>().linearVelocity = newProjectileStraight.transform.up * projectileSpeed;
             newProjectileLeft.GetComponent<Rigidbody2D>().linearVelocity = newProjectileLeft.transform.up * projectileSpeed;
             newProjectileRight.GetComponent<Rigidbody2D>().linearVelocity = newProjectileRight.transform.up * projectileSpeed;
         }
-        {
+        else{
             GameObject newProjectileStraight = Instantiate(projectilePrefab, transform.position, transform.rotation);
             newProjectileStraight.GetComponent<Rigidbody2D>().linearVelocity = transform.up * projectileSpeed;
         }
@@ -44,7 +57,9 @@ public class AutoWeapon : MonoBehaviour
 
     // Point the weapon towards the target
     public void Aim(Transform target)
-    {
+    { 
+        currentTarget = target;
+
         // Calculate the direction to the target
         Vector2 direction = target.position - transform.position;
 

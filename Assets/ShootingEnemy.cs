@@ -7,7 +7,11 @@ public class ShootingEnemy : Enemy
     [SerializeField] private Transform firePoint;
     [SerializeField] float projectileSpeed = 10f;
 
-
+    public override void Setup(float newHealth, float newSpeed, float newAttackDamage, float newAttackSpeed, float newProjectileSpeed)
+    {
+        base.Setup(newHealth, newSpeed, newAttackDamage, newAttackSpeed, newProjectileSpeed);
+        this.projectileSpeed = newProjectileSpeed;
+    }
 
     public override void Attack()
     {

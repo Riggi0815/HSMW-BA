@@ -41,14 +41,23 @@ public class WaveManager : MonoBehaviour
     public void SpawnNewWave()
     {
         WaveScriptable waveData = waves[currentWave];
-        
+        waveData.explosionEnemyPrefab.GetComponent<Enemy>().Setup(waveData.eEMaxHealth, waveData.eESpeed, waveData.eEAttackDamage, 0, 0);
+        waveData.shootingEnemyPrefab.GetComponent<Enemy>().Setup(waveData.shEMaxHealth, waveData.shESpeed, waveData.shEAttackDamage, 0, waveData.shEProjectileSpeed);
+        waveData.sprayEnemyPrefab.GetComponent<Enemy>().Setup(waveData.spEMaxHealth, waveData.spESpeed, waveData.spEAttackDamage, waveData.spEAttackSpeed, waveData.spEProjectileSpeed);
 
-        foreach (EnemyNumber enemyNumber in waveData.enemies)
+        for (int i = 0; i < waveData.explosionEnemyCount; i++)
         {
-            for (int i = 0; i < enemyNumber.enemyCount; i++)
-            {
-                enemiesToSpawn.Add(enemyNumber.enemyPrefab);
-            }
+            enemiesToSpawn.Add(waveData.explosionEnemyPrefab);
+        }
+
+        for (int i = 0; i < waveData.shootingEnemyCount; i++)
+        {
+            enemiesToSpawn.Add(waveData.shootingEnemyPrefab);
+        }
+
+        for (int i = 0; i < waveData.sprayEnemyCount; i++)
+        {
+            enemiesToSpawn.Add(waveData.sprayEnemyPrefab);
         }
 
         OnNewWave?.Invoke(enemiesToSpawn, waveData.spawnTime);

@@ -3,25 +3,32 @@ using UnityEngine;
 public class ExplosionEnemy : Enemy
 {
 
-    public override void Update() {
+    [SerializeField] ParticleSystem explosionParticle;
+    private bool isExploding = false;
+    public override void Update()
+    {
         base.Update();
         Attack();
     }
     public override void Attack()
     {
-        if (Vector2.Distance(transform.position, player.position) < attackRange)
-            {
-                player.GetComponent<IDamageable>().Damage(attackDamage);
-                Die();
+        if (Vector2.Distance(transform.position, player.position) < attackRange && !isExploding)
+        {
+            player.GetComponent<IDamageable>().Damage(attackDamage);
+            Explode();
+                isExploding = true;
             }
 
         
     }
 
-    public override void Die()
+    public void Explode()
     {
-        Destroy(gameObject);
-        ExpManager.Instance.AddExp(expAmount);
+        speed = 0;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        GetComponentInChildren<Canvas>().enabled = false;
+        explosionParticle.Play();
+        Destroy(gameObject, explosionParticle.main.duration);
         CheckEnemyCount();
     }
 }

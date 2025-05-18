@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour, IDamageable
 {   
     
-    [SerializeField] float maxHealth;
+    public float maxHealth;
     [SerializeField] float currentHealth;
     public int expAmount;
     private float minHealth = 0f;
@@ -44,7 +44,15 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 
-    public virtual void Update() {
+    public virtual void Setup(float newHealth, float newSpeed, float newAttackDamage, float newAttackSpeed, float newProjectileSpeed)
+    {
+        this.maxHealth = newHealth;
+        this.speed = newSpeed;
+        this.attackDamage = newAttackDamage;
+    }
+
+    public virtual void Update()
+    {
         Move();
     }
     

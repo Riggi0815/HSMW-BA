@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 652152d2ae750c947a66e38b25b68a19, type: 3}
-  m_Name: Wave1
+  m_Name: Wave10
   m_EditorClassIdentifier: 
-  waveNumber: 1
+  waveNumber: 10
   spawnTime: 1
   explosionEnemyPrefab: {fileID: 1127127656910504264, guid: 7ba1f5cfe68ff874a8b4a8cbeb4a511f, type: 3}
-  explosionEnemyCount: 5
-  eEMaxHealth: 300
-  eESpeed: 3
-  eEAttackDamage: 30
+  explosionEnemyCount: 20
+  eEMaxHealth: 800
+  eESpeed: 5
+  eEAttackDamage: 80
   shootingEnemyPrefab: {fileID: 1127127656910504264, guid: a09c0946c3469b64f9abec6f36d5fa09, type: 3}
-  shootingEnemyCount: 3
-  shEMaxHealth: 200
-  shESpeed: 3
-  shEAttackDamage: 20
-  shEProjectileSpeed: 10
+  shootingEnemyCount: 12
+  shEMaxHealth: 500
+  shESpeed: 5
+  shEAttackDamage: 50
+  shEProjectileSpeed: 20
   sprayEnemyPrefab: {fileID: 1127127656910504264, guid: 7899ddb2d9edc2d459af41532b15bfc5, type: 3}
-  sprayEnemyCount: 2
-  spEMaxHealth: 100
-  spESpeed: 2
-  spEAttackDamage: 10
-  spEAttackSpeed: 0.6
-  spEProjectileSpeed: 10
+  sprayEnemyCount: 12
+  spEMaxHealth: 400
+  spESpeed: 3
+  spEAttackDamage: 30
+  spEAttackSpeed: 0.15
+  spEProjectileSpeed: 20
