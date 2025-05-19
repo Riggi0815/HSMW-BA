@@ -24,9 +24,9 @@ public class SprayEnemy : Enemy
         
     }
 
-    public override void Setup(float newHealth, float newSpeed, float newAttackDamage, float newAttackSpeed, float newProjectileSpeed)
+    public override void Setup(float newHealth, float newSpeed, float newAttackDamage, float newAttackSpeed, float newProjectileSpeed, float baseExp, int multiplier)
     {
-        base.Setup(newHealth, newSpeed, newAttackDamage, newAttackSpeed, newProjectileSpeed);
+        base.Setup(newHealth, newSpeed, newAttackDamage, newAttackSpeed, newProjectileSpeed, baseExp, multiplier);
         this.projectileSpeed = newProjectileSpeed;
         this.attackSpeed = newAttackSpeed;
     }

@@ -56,13 +56,13 @@ public class PlayerStats : MonoBehaviour, IDamageable
         currentLvl++;
 
         currentExp = currentExp - maxExp;
-        maxExp += 100;
+        maxExp = 300 + (50 * currentLvl) + (10 * currentLvl * currentLvl);
 
         OnLevelUp?.Invoke(currentLvl);
         OnExpUpdate?.Invoke(currentExp, maxExp);
         if (currentLvl == 2)
         {
-            playerBullet.GetComponent<PlayerBullet>().Damage = 30;
+            playerBullet.GetComponent<PlayerBullet>().Damage = 100;
         }
 
         if (currentLvl == 3)
@@ -75,6 +75,10 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         currentHealth -= damageAmount;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        if (currentHealth <= 0)
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 
     private void Update()

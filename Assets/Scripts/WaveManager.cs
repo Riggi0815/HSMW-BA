@@ -27,6 +27,11 @@ public class WaveManager : MonoBehaviour
     [SerializeField] List<GameObject> enemiesToSpawn = new List<GameObject>();
 
     [SerializeField] int currentWave = 0;
+    public int CurrentWave
+    {
+        get { return currentWave; }
+        set { currentWave = value; }
+    }
 
     public delegate void NewWave(List<GameObject> enemies, float spawnTime);
     public event NewWave OnNewWave;
@@ -41,9 +46,9 @@ public class WaveManager : MonoBehaviour
     public void SpawnNewWave()
     {
         WaveScriptable waveData = waves[currentWave];
-        waveData.explosionEnemyPrefab.GetComponent<Enemy>().Setup(waveData.eEMaxHealth, waveData.eESpeed, waveData.eEAttackDamage, 0, 0);
-        waveData.shootingEnemyPrefab.GetComponent<Enemy>().Setup(waveData.shEMaxHealth, waveData.shESpeed, waveData.shEAttackDamage, 0, waveData.shEProjectileSpeed);
-        waveData.sprayEnemyPrefab.GetComponent<Enemy>().Setup(waveData.spEMaxHealth, waveData.spESpeed, waveData.spEAttackDamage, waveData.spEAttackSpeed, waveData.spEProjectileSpeed);
+        waveData.explosionEnemyPrefab.GetComponent<Enemy>().Setup(waveData.eEMaxHealth, waveData.eESpeed, waveData.eEAttackDamage, 0, 0, 30, 7);
+        waveData.shootingEnemyPrefab.GetComponent<Enemy>().Setup(waveData.shEMaxHealth, waveData.shESpeed, waveData.shEAttackDamage, 0, waveData.shEProjectileSpeed, 20, 4);
+        waveData.sprayEnemyPrefab.GetComponent<Enemy>().Setup(waveData.spEMaxHealth, waveData.spESpeed, waveData.spEAttackDamage, waveData.spEAttackSpeed, waveData.spEProjectileSpeed, 10, 3);
 
         for (int i = 0; i < waveData.explosionEnemyCount; i++)
         {

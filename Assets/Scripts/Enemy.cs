@@ -44,8 +44,9 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 
-    public virtual void Setup(float newHealth, float newSpeed, float newAttackDamage, float newAttackSpeed, float newProjectileSpeed)
+    public virtual void Setup(float newHealth, float newSpeed, float newAttackDamage, float newAttackSpeed, float newProjectileSpeed, float baseExp, int multiplier)
     {
+        expAmount = (int)(baseExp + (WaveManager.Instance.CurrentWave * multiplier));
         this.maxHealth = newHealth;
         this.speed = newSpeed;
         this.attackDamage = newAttackDamage;

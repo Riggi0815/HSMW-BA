@@ -16,7 +16,7 @@ MonoBehaviour:
   spawnTime: 1
   explosionEnemyPrefab: {fileID: 1127127656910504264, guid: 7ba1f5cfe68ff874a8b4a8cbeb4a511f, type: 3}
   explosionEnemyCount: 10
-  eEMaxHealth: 500
+  eEMaxHealth: 450
   eESpeed: 3.8
   eEAttackDamage: 50
   shootingEnemyPrefab: {fileID: 1127127656910504264, guid: a09c0946c3469b64f9abec6f36d5fa09, type: 3}
