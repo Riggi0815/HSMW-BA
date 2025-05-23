@@ -7,6 +7,8 @@ public class CSVWriter : MonoBehaviour
 
     public static CSVWriter Instance;
 
+    [SerializeField] private bool logEnabled = true;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -24,48 +26,56 @@ public class CSVWriter : MonoBehaviour
     
     public void CreateCSVFile()
     {
-        string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-        
-        // Create a logs directory inside persistentDataPath (this is better than dataPath)
-        logDirectory = Path.Combine(Application.persistentDataPath, "Logs");
-        
-        // Create directory if it doesn't exist
-        if (!Directory.Exists(logDirectory))
+        if (logEnabled)
         {
+            string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        
+            // Create a logs directory inside persistentDataPath (this is better than dataPath)
+            logDirectory = Path.Combine(Application.persistentDataPath, "Logs");
+        
+            // Create directory if it doesn't exist
+            if (!Directory.Exists(logDirectory))
+                {
+                try
+                {
+                    Directory.CreateDirectory(logDirectory);
+                    Debug.Log($"Created log directory at: {logDirectory}");
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"Failed to create log directory: {e.Message}");
+                    // Fallback to application data path if we can't create the directory
+                    logDirectory = Application.dataPath;
+                }
+            }
+        
+            fileName = Path.Combine(logDirectory, $"LogFile_{timestamp}.csv");
+        
             try
             {
-                Directory.CreateDirectory(logDirectory);
-                Debug.Log($"Created log directory at: {logDirectory}");
+                using (TextWriter tw = new StreamWriter(fileName, false))
+                {
+                    tw.WriteLine("WaveCount; EnemyType; EnemyCount; EnemyHealth; EnemySpeed; EnemyAttackDamage; EnemyAttackSpeed; EnemyProjectileSpeed; PlayerLevel;");
+                }
+                Debug.Log($"CSV log file created at: {fileName}");
             }
             catch (Exception e)
             {
-                Debug.LogError($"Failed to create log directory: {e.Message}");
-                // Fallback to application data path if we can't create the directory
-                logDirectory = Application.dataPath;
+                Debug.LogError($"Failed to create CSV file: {e.Message}");
             }
         }
         
-        fileName = Path.Combine(logDirectory, $"LogFile_{timestamp}.csv");
-        
-        try
-        {
-            using (TextWriter tw = new StreamWriter(fileName, false))
-            {
-                tw.WriteLine("WaveCount; EnemyType; EnemyCount; EnemyHealth; EnemySpeed; EnemyAttackDamage; EnemyAttackSpeed; EnemyProjectileSpeed; PlayerLevel;");
-            }
-            Debug.Log($"CSV log file created at: {fileName}");
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"Failed to create CSV file: {e.Message}");
-        }
     }
 
     public void WriteCSVLine(int waveCount, string enemyType, int enemyCount, float enemyHealth, float enemySpeed, float enemyAttackDamage, float enemyAttackSpeed, float enemyProjectileSpeed, int playerLevel)
     {
-        TextWriter tw = new StreamWriter(fileName, true);
-        tw.WriteLine($"{waveCount}; {enemyType}; {enemyCount}; {enemyHealth}; {enemySpeed}; {enemyAttackDamage}; {enemyAttackSpeed}; {enemyProjectileSpeed}; {playerLevel};");
-        tw.Close();
+        if (logEnabled)
+        {
+            TextWriter tw = new StreamWriter(fileName, true);
+            tw.WriteLine($"{waveCount}; {enemyType}; {enemyCount}; {enemyHealth}; {enemySpeed}; {enemyAttackDamage}; {enemyAttackSpeed}; {enemyProjectileSpeed}; {playerLevel};");
+            tw.Close();
+        }
+        
     }
 
 }

@@ -34,6 +34,8 @@ public class PlayerStats : MonoBehaviour, IDamageable
         healthBar = GetComponentInChildren<FloatingHealthBar>();
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         OnExpUpdate?.Invoke(currentExp, maxExp);
+        playerBullet.GetComponent<PlayerBullet>().Damage = 45;
+        autoWeapon.ReloadSpeed = .8f;
     }
 
     public void Reset()

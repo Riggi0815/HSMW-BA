@@ -17,6 +17,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public float attackDamage;
 
     public Transform player;
+    private float worldBorder = 28f;
 
     [SerializeField] private bool walkPointSet = false;
     private Vector2 walkPoint;
@@ -79,10 +80,11 @@ public abstract class Enemy : MonoBehaviour, IDamageable
                     }
                     Vector2 distanceToWalkPoint = (Vector2)transform.position - walkPoint;
 
-                    if (distanceToWalkPoint.magnitude < 0.2f)
-                    {
-                        Attack();
-                        walkPointSet = false;
+                if (distanceToWalkPoint.magnitude < 0.2f)
+                {
+                    StartCoroutine(Wait());
+                    Attack();
+                    walkPointSet = false;
                     }
                 break;
             default:
@@ -90,13 +92,37 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         }
     }
 
+    IEnumerator Wait()
+    {
+        speed = 0f;
+        yield return new WaitForSeconds(1f);
+        speed = 3f;
+    }
+
     private void SearchWalkPoint()
     {
         float randomX = Random.Range(-patrolRange, patrolRange);
         float randomY = Random.Range(-patrolRange, patrolRange);
-    
+
+        if (randomX > worldBorder)
+        {
+            randomX = worldBorder;
+        }
+        else if (randomX < -worldBorder)
+        {
+            randomX = -worldBorder;
+        }
+        if (randomY > worldBorder)
+        {
+            randomY = worldBorder;
+        }
+        else if (randomY < -worldBorder)
+        {
+            randomY = -worldBorder;
+        }
+
         walkPoint = new Vector2(transform.position.x + randomX, transform.position.y + randomY);
-    
+
         walkPointSet = true;
     }
 
