@@ -37,6 +37,11 @@ public class Spawner : MonoBehaviour
         WaveManager.Instance.OnNewWave -= HandleNewWave;
     }
 
+    public void Reset()
+    {
+        objectsToSpawn.Clear();
+    }
+
     // Update is called once per frame
     void Update()
     {

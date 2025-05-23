@@ -22,4 +22,13 @@ public class SceneManager : MonoBehaviour
         gameUI.SetActive(true);
         menuUI.SetActive(false);
     }
+
+    public void MenuSwitch()
+    {
+        Time.timeScale = 0f;
+        menuCamera.gameObject.SetActive(true);
+        gameCamera.gameObject.SetActive(false);
+        gameUI.SetActive(false);
+        menuUI.SetActive(true);
+    }
 }

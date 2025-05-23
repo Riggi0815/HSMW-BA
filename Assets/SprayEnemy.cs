@@ -5,6 +5,7 @@ public class SprayEnemy : Enemy
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform[] firePoints;
+    [SerializeField] GameObject bulletHolder;
     [SerializeField] float projectileSpeed = 10f;
 
     private float shootTimer;
@@ -24,6 +25,10 @@ public class SprayEnemy : Enemy
         
     }
 
+    private void Awake() {
+        bulletHolder = GameObject.Find("BulletHolder");
+    }
+
     public override void Setup(float newHealth, float newSpeed, float newAttackDamage, float newAttackSpeed, float newProjectileSpeed, float baseExp, int multiplier)
     {
         base.Setup(newHealth, newSpeed, newAttackDamage, newAttackSpeed, newProjectileSpeed, baseExp, multiplier);
@@ -38,7 +43,7 @@ public class SprayEnemy : Enemy
         {
 
             // Instantiate bullet at firepoint position and rotation
-            GameObject newBullet = Instantiate(bulletPrefab, firePoints[i].position, firePoints[i].rotation);
+            GameObject newBullet = Instantiate(bulletPrefab, firePoints[i].position, firePoints[i].rotation, bulletHolder.transform);
 
             // Pass damage to the bullet
             Bullet bullet = newBullet.GetComponent<Bullet>();

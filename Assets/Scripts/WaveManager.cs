@@ -38,7 +38,7 @@ public class WaveManager : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void StartSpawning()
     {
         Invoke("SpawnNewWave", beforeFirstWaveTime);
     }
@@ -49,6 +49,10 @@ public class WaveManager : MonoBehaviour
         waveData.explosionEnemyPrefab.GetComponent<Enemy>().Setup(waveData.eEMaxHealth, waveData.eESpeed, waveData.eEAttackDamage, 0, 0, 30, 7);
         waveData.shootingEnemyPrefab.GetComponent<Enemy>().Setup(waveData.shEMaxHealth, waveData.shESpeed, waveData.shEAttackDamage, 0, waveData.shEProjectileSpeed, 20, 4);
         waveData.sprayEnemyPrefab.GetComponent<Enemy>().Setup(waveData.spEMaxHealth, waveData.spESpeed, waveData.spEAttackDamage, waveData.spEAttackSpeed, waveData.spEProjectileSpeed, 10, 3);
+
+        CSVWriter.Instance.WriteCSVLine(currentWave + 1, waveData.explosionEnemyPrefab.name, waveData.explosionEnemyCount, waveData.eEMaxHealth, waveData.eESpeed, waveData.eEAttackDamage, 0, 0, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().CurrentLvl);
+        CSVWriter.Instance.WriteCSVLine(currentWave + 1, waveData.shootingEnemyPrefab.name, waveData.shootingEnemyCount, waveData.shEMaxHealth, waveData.shESpeed, waveData.shEAttackDamage, 0, waveData.shEProjectileSpeed, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().CurrentLvl);
+        CSVWriter.Instance.WriteCSVLine(currentWave + 1, waveData.sprayEnemyPrefab.name, waveData.sprayEnemyCount, waveData.spEMaxHealth, waveData.spESpeed, waveData.spEAttackDamage, waveData.spEAttackSpeed, waveData.spEProjectileSpeed, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().CurrentLvl);
 
         for (int i = 0; i < waveData.explosionEnemyCount; i++)
         {

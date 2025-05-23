@@ -14,9 +14,10 @@ public class WeaponManager : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Reset()
     {
-        
+        rotateAroundPlayer.transform.rotation = Quaternion.Euler(0, 0, 0);
+        autoWeapon.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     // Update is called once per frame

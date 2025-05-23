@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     [SerializeField] private AutoWeapon autoWeapon;
 
     public float Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public float CurrentLvl => currentLvl;
+    public float CurrentLvl {get => currentLvl; set => currentLvl = value;}
 
     public event Action<float> OnLevelUp;
     public event Action<float, float> OnExpUpdate;
@@ -33,6 +33,20 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         healthBar = GetComponentInChildren<FloatingHealthBar>();
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        OnExpUpdate?.Invoke(currentExp, maxExp);
+    }
+
+    public void Reset()
+    {
+        currentHealth = maxHealth;
+        playerBullet.GetComponent<PlayerBullet>().Damage = 45;
+        autoWeapon.ReloadSpeed = .8f;
+        currentExp = 0;
+        maxExp = 300;
+        currentLvl = 0;
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        OnExpUpdate?.Invoke(currentExp, maxExp);
+        OnLevelUp?.Invoke(currentLvl);
     }
 
     private void HandleExpChange(int amount)
@@ -49,11 +63,13 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     private void LevelUp()
     {
+        
         //Handle the level up
         maxHealth += 10;
         currentHealth = maxHealth;
 
         currentLvl++;
+        Debug.Log("Level Up: " + currentLvl);
 
         currentExp = currentExp - maxExp;
         maxExp = 300 + (50 * currentLvl) + (10 * currentLvl * currentLvl);
@@ -67,7 +83,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
         if (currentLvl == 3)
         {
-            autoWeapon.ReloadSpeed = .5f;
+            autoWeapon.ReloadSpeed = .6f;
         }
     }
 
