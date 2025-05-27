@@ -20,7 +20,6 @@ public class ShootingEnemy : Enemy
 
     public override void Attack()
     {
-        Debug.Log("Shoot");
         // Calculate the direction to the target
         Vector2 direction = player.position - transform.position;
 

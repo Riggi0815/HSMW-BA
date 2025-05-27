@@ -131,7 +131,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.19
 --- !u!114 &-1923716623904506681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   currentEnemyType: 2
   bulletPrefab: {fileID: 935207571025236438, guid: 13cbf5572530cb0499e10e459b491922, type: 3}
   firePoint: {fileID: 4294348145180615056}
+  bulletHolder: {fileID: 0}
   projectileSpeed: 10
 --- !u!50 &4567907909926606180
 Rigidbody2D:

@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: Wave3
   m_EditorClassIdentifier: 
   waveNumber: 3
-  spawnTime: 1
+  spawnTime: 1.6
   explosionEnemyPrefab: {fileID: 1127127656910504264, guid: 7ba1f5cfe68ff874a8b4a8cbeb4a511f, type: 3}
   explosionEnemyCount: 7
-  eEMaxHealth: 350
+  eEMaxHealth: 270
   eESpeed: 3.4
   eEAttackDamage: 40
   shootingEnemyPrefab: {fileID: 1127127656910504264, guid: a09c0946c3469b64f9abec6f36d5fa09, type: 3}
   shootingEnemyCount: 5
-  shEMaxHealth: 250
+  shEMaxHealth: 200
   shESpeed: 3.4
   shEAttackDamage: 25
-  shEProjectileSpeed: 12
+  shEProjectileSpeed: 9
   sprayEnemyPrefab: {fileID: 1127127656910504264, guid: 7899ddb2d9edc2d459af41532b15bfc5, type: 3}
   sprayEnemyCount: 4
   spEMaxHealth: 150
   spESpeed: 2.2
   spEAttackDamage: 14
-  spEAttackSpeed: 0.5
-  spEProjectileSpeed: 12
+  spEAttackSpeed: 1.3
+  spEProjectileSpeed: 9

@@ -17,7 +17,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public float attackDamage;
 
     public Transform player;
-    private float worldBorder = 28f;
+    private float worldBorder = 27f;
 
     [SerializeField] private bool walkPointSet = false;
     private Vector2 walkPoint;
@@ -71,7 +71,11 @@ public abstract class Enemy : MonoBehaviour, IDamageable
                     }
                     else
                     {
-                        
+                        if (walkPoint.x < -worldBorder || walkPoint.x > worldBorder || walkPoint.y < -worldBorder || walkPoint.y > worldBorder)
+                        {
+                            walkPointSet = false;
+                            SearchWalkPoint();
+                        }
                         Vector2 direction = walkPoint - (Vector2)transform.position;
                         direction.Normalize();
                         Quaternion lookRotation = Quaternion.LookRotation(Vector3.forward, direction);

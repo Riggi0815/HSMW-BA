@@ -42,8 +42,14 @@ public class PlayerBullet : MonoBehaviour
 
         }
 
-        // Destroy the arrow when it collides with an enemy
-        Destroy(gameObject);
+        if (playerStats.CurrentLvl < 3)
+        {
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("World"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Update()

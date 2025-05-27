@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Wave9
   m_EditorClassIdentifier: 
   waveNumber: 9
-  spawnTime: 1
+  spawnTime: 2.8
   explosionEnemyPrefab: {fileID: 1127127656910504264, guid: 7ba1f5cfe68ff874a8b4a8cbeb4a511f, type: 3}
   explosionEnemyCount: 18
-  eEMaxHealth: 650
+  eEMaxHealth: 550
   eESpeed: 4.6
   eEAttackDamage: 70
   shootingEnemyPrefab: {fileID: 1127127656910504264, guid: a09c0946c3469b64f9abec6f36d5fa09, type: 3}
@@ -24,11 +24,11 @@ MonoBehaviour:
   shEMaxHealth: 450
   shESpeed: 4.6
   shEAttackDamage: 45
-  shEProjectileSpeed: 18
+  shEProjectileSpeed: 15
   sprayEnemyPrefab: {fileID: 1127127656910504264, guid: 7899ddb2d9edc2d459af41532b15bfc5, type: 3}
   sprayEnemyCount: 10
-  spEMaxHealth: 350
+  spEMaxHealth: 370
   spESpeed: 2.8
   spEAttackDamage: 26
-  spEAttackSpeed: 0.2
-  spEProjectileSpeed: 18
+  spEAttackSpeed: 0.6
+  spEProjectileSpeed: 15

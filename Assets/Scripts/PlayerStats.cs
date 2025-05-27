@@ -81,12 +81,9 @@ public class PlayerStats : MonoBehaviour, IDamageable
         if (currentLvl == 2)
         {
             playerBullet.GetComponent<PlayerBullet>().Damage = 100;
-        }
-
-        if (currentLvl == 3)
-        {
             autoWeapon.ReloadSpeed = .6f;
         }
+
     }
 
     public void Damage(float damageAmount)

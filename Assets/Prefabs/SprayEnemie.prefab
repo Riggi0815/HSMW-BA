@@ -87,15 +87,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0cd634993382d2468051ba8934a31eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 150
   currentHealth: 0
-  expAmount: 50
+  expAmount: 10
   healthBar: {fileID: 3645411322852317995}
-  speed: 1
+  speed: 2
   patrolRange: 0
   attackRange: 0
-  attackSpeed: 0.4
-  attackDamage: 20
+  attackSpeed: 1.2
+  attackDamage: 10
   player: {fileID: 0}
   walkPointSet: 0
   currentEnemyType: 1
@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 7684968285695830313}
   - {fileID: 1825759530507147068}
   - {fileID: 3716080228002159230}
+  bulletHolder: {fileID: 0}
   projectileSpeed: 10
 --- !u!1 &3205000946113157577
 GameObject:

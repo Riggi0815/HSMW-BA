@@ -41,7 +41,6 @@ public class ExpBar : MonoBehaviour
 
 
     public void UpdateBar(float currentExp, float maxExp){
-        Debug.Log("Current Exp: " + currentExp + " Max Exp: " + maxExp);
         slider.value = currentExp / maxExp;
     }
 
