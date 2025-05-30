@@ -19,6 +19,10 @@ public class Spawner : MonoBehaviour
     }
 
     [SerializeField] List<GameObject> objectsToSpawn;
+    public List<GameObject> ObjectsToSpawn
+    {
+        get { return objectsToSpawn; }
+    }
 
     [SerializeField] float spawnRadius;
     [SerializeField] float spawnTimer;

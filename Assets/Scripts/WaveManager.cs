@@ -27,6 +27,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] List<GameObject> enemiesToSpawn = new List<GameObject>();
 
     [SerializeField] int currentWave = 0;
+    [SerializeField] TMPro.TextMeshProUGUI waveText;
+    [SerializeField] PlayerStats playerStats;
     public int CurrentWave
     {
         get { return currentWave; }
@@ -50,9 +52,9 @@ public class WaveManager : MonoBehaviour
         waveData.shootingEnemyPrefab.GetComponent<Enemy>().Setup(waveData.shEMaxHealth, waveData.shESpeed, waveData.shEAttackDamage, 0, waveData.shEProjectileSpeed, 20, 4);
         waveData.sprayEnemyPrefab.GetComponent<Enemy>().Setup(waveData.spEMaxHealth, waveData.spESpeed, waveData.spEAttackDamage, waveData.spEAttackSpeed, waveData.spEProjectileSpeed, 10, 3);
 
-        CSVWriter.Instance.WriteCSVLine(currentWave + 1, waveData.explosionEnemyPrefab.name, waveData.explosionEnemyCount, waveData.eEMaxHealth, waveData.eESpeed, waveData.eEAttackDamage, 0, 0, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().CurrentLvl);
-        CSVWriter.Instance.WriteCSVLine(currentWave + 1, waveData.shootingEnemyPrefab.name, waveData.shootingEnemyCount, waveData.shEMaxHealth, waveData.shESpeed, waveData.shEAttackDamage, 0, waveData.shEProjectileSpeed, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().CurrentLvl);
-        CSVWriter.Instance.WriteCSVLine(currentWave + 1, waveData.sprayEnemyPrefab.name, waveData.sprayEnemyCount, waveData.spEMaxHealth, waveData.spESpeed, waveData.spEAttackDamage, waveData.spEAttackSpeed, waveData.spEProjectileSpeed, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().CurrentLvl);
+        CSVWriter.Instance.WriteCSVLine(currentWave + 1, waveData.explosionEnemyPrefab.name, waveData.explosionEnemyCount, waveData.eEMaxHealth, waveData.eESpeed, waveData.eEAttackDamage, 0, 0, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().Health, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().CurrentHealth);
+        CSVWriter.Instance.WriteCSVLine(currentWave + 1, waveData.shootingEnemyPrefab.name, waveData.shootingEnemyCount, waveData.shEMaxHealth, waveData.shESpeed, waveData.shEAttackDamage, 0, waveData.shEProjectileSpeed, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().Health, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().CurrentHealth);
+        CSVWriter.Instance.WriteCSVLine(currentWave + 1, waveData.sprayEnemyPrefab.name, waveData.sprayEnemyCount, waveData.spEMaxHealth, waveData.spESpeed, waveData.spEAttackDamage, waveData.spEAttackSpeed, waveData.spEProjectileSpeed, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().Health, (int)GameManager.Instance.Player.GetComponent<PlayerStats>().CurrentHealth);
 
         for (int i = 0; i < waveData.explosionEnemyCount; i++)
         {
@@ -71,6 +73,7 @@ public class WaveManager : MonoBehaviour
 
         OnNewWave?.Invoke(enemiesToSpawn, waveData.spawnTime);
         currentWave++;
+        waveText.text = "Welle " + currentWave.ToString();
         enemiesToSpawn.Clear();
     } 
 
@@ -78,11 +81,13 @@ public class WaveManager : MonoBehaviour
     {
         if (currentWave < waves.Length)
         {
+            playerStats.Heal(50);
             Invoke("SpawnNewWave", betwenWaveTime);
         }
         else
         {
             Debug.Log("All Waves Cleared");
+            GameManager.Instance.GameComplete();
         }
     }
 }

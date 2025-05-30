@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TMPro.TextMeshProUGUI gameOverText;
+    [SerializeField] private GameObject gameCompletePanel;
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject bulletHolder;
@@ -34,6 +35,12 @@ public class GameManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         gameOverText.text = $"Bis Welle {WaveManager.Instance.CurrentWave} überlebt";
+        Time.timeScale = 0f;
+    }
+
+    public void GameComplete()
+    {
+        gameCompletePanel.SetActive(true);
         Time.timeScale = 0f;
     }
 

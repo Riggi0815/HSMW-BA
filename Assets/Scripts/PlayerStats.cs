@@ -11,9 +11,12 @@ public class PlayerStats : MonoBehaviour, IDamageable
     [SerializeField] private ExpBar expBar;
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private AutoWeapon autoWeapon;
+    [SerializeField] float damageTakenLastWave;
+    public float DamageTakenLastWave { get => damageTakenLastWave; set => damageTakenLastWave = value; }
 
-    public float Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-    public float CurrentLvl {get => currentLvl; set => currentLvl = value;}
+    public float Health { get => maxHealth; set => maxHealth = value; }
+    public float CurrentHealth { get => currentHealth; set => currentHealth = value; }
+    public float CurrentLvl { get => currentLvl; set => currentLvl = value; }
 
     public event Action<float> OnLevelUp;
     public event Action<float, float> OnExpUpdate;
@@ -57,7 +60,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         //Handle the experience change
         currentExp += amount;
         OnExpUpdate?.Invoke(currentExp, maxExp);
-        if (currentExp >= maxExp)
+        if (currentExp >= maxExp && currentLvl < 5)
         {
             LevelUp();
         }
@@ -67,8 +70,9 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         
         //Handle the level up
-        maxHealth += 10;
+        maxHealth += 50;
         currentHealth = maxHealth;
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
         currentLvl++;
         Debug.Log("Level Up: " + currentLvl);
@@ -85,10 +89,21 @@ public class PlayerStats : MonoBehaviour, IDamageable
         }
 
     }
+    
+    public void Heal(float healAmount)
+    {
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.UpdateHealthBar(currentHealth, maxHealth);
+    }
 
     public void Damage(float damageAmount)
     {
         currentHealth -= damageAmount;
+        damageTakenLastWave += damageAmount;
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         if (currentHealth <= 0)
         {

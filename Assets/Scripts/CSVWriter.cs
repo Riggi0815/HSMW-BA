@@ -23,19 +23,19 @@ public class CSVWriter : MonoBehaviour
 
     string fileName = "";
     string logDirectory = "";
-    
+
     public void CreateCSVFile()
     {
         if (logEnabled)
         {
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-        
+
             // Create a logs directory inside persistentDataPath (this is better than dataPath)
             logDirectory = Path.Combine(Application.persistentDataPath, "NoAILogs");
-        
+
             // Create directory if it doesn't exist
             if (!Directory.Exists(logDirectory))
-                {
+            {
                 try
                 {
                     Directory.CreateDirectory(logDirectory);
@@ -48,14 +48,14 @@ public class CSVWriter : MonoBehaviour
                     logDirectory = Application.dataPath;
                 }
             }
-        
+
             fileName = Path.Combine(logDirectory, $"NoAILogFile_{timestamp}.csv");
-        
+
             try
             {
                 using (TextWriter tw = new StreamWriter(fileName, false))
                 {
-                    tw.WriteLine("WaveCount; EnemyType; EnemyCount; EnemyHealth; EnemySpeed; EnemyAttackDamage; EnemyAttackSpeed; EnemyProjectileSpeed; PlayerLevel;");
+                    tw.WriteLine("WaveCount; EnemyType; EnemyCount; EnemyHealth; EnemySpeed; EnemyAttackDamage; EnemyAttackSpeed; EnemyProjectileSpeed; PlayerMaxHealth; PlayerCurrentHealth");
                 }
                 Debug.Log($"CSV log file created at: {fileName}");
             }
@@ -64,18 +64,29 @@ public class CSVWriter : MonoBehaviour
                 Debug.LogError($"Failed to create CSV file: {e.Message}");
             }
         }
-        
+
     }
 
-    public void WriteCSVLine(int waveCount, string enemyType, int enemyCount, float enemyHealth, float enemySpeed, float enemyAttackDamage, float enemyAttackSpeed, float enemyProjectileSpeed, int playerLevel)
+    public void WriteCSVLine(int waveCount, string enemyType, int enemyCount, float enemyHealth, float enemySpeed, float enemyAttackDamage, float enemyAttackSpeed, float enemyProjectileSpeed, int playerMaxHealth, int playerCurrentHealth)
     {
         if (logEnabled)
         {
             TextWriter tw = new StreamWriter(fileName, true);
-            tw.WriteLine($"{waveCount}; {enemyType}; {enemyCount}; {enemyHealth}; {enemySpeed}; {enemyAttackDamage}; {enemyAttackSpeed}; {enemyProjectileSpeed}; {playerLevel};");
+            tw.WriteLine($"{waveCount}; {enemyType}; {enemyCount}; {enemyHealth}; {enemySpeed}; {enemyAttackDamage}; {enemyAttackSpeed}; {enemyProjectileSpeed}; {playerMaxHealth}; {playerCurrentHealth}");
             tw.Close();
         }
-        
+
+    }
+
+    public void WriteDamageLine(float damage)
+    {
+        if (logEnabled)
+        {
+            TextWriter tw = new StreamWriter(fileName, true);
+            tw.WriteLine($"Damage Taken This Wave; {damage}");
+            tw.WriteLine();
+            tw.Close();
+        }
     }
 
 }

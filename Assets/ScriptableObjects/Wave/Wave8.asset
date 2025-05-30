@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave8
   m_EditorClassIdentifier: 
   waveNumber: 8
-  spawnTime: 2.6
+  spawnTime: 2
   explosionEnemyPrefab: {fileID: 1127127656910504264, guid: 7ba1f5cfe68ff874a8b4a8cbeb4a511f, type: 3}
   explosionEnemyCount: 16
   eEMaxHealth: 500
