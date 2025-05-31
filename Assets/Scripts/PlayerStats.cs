@@ -70,7 +70,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
 
             //Handle the level up
-            maxHealth += 50;
+            maxHealth += 30;
             currentHealth = maxHealth;
             healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
