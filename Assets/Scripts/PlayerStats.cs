@@ -37,14 +37,14 @@ public class PlayerStats : MonoBehaviour, IDamageable
         healthBar = GetComponentInChildren<FloatingHealthBar>();
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
         OnExpUpdate?.Invoke(currentExp, maxExp);
-        playerBullet.GetComponent<PlayerBullet>().Damage = 45;
+        playerBullet.GetComponent<PlayerBullet>().Damage = 35;
         autoWeapon.ReloadSpeed = .8f;
     }
 
     public void Reset()
     {
         currentHealth = maxHealth;
-        playerBullet.GetComponent<PlayerBullet>().Damage = 45;
+        playerBullet.GetComponent<PlayerBullet>().Damage = 35;
         autoWeapon.ReloadSpeed = .8f;
         currentExp = 0;
         maxExp = 300;
@@ -84,7 +84,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
             OnExpUpdate?.Invoke(currentExp, maxExp);
             if (currentLvl == 2)
             {
-                playerBullet.GetComponent<PlayerBullet>().Damage = 100;
+                playerBullet.GetComponent<PlayerBullet>().Damage = 75;
                 autoWeapon.ReloadSpeed = .6f;
             }
     }
