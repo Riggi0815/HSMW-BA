@@ -60,7 +60,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
         //Handle the experience change
         currentExp += amount;
         OnExpUpdate?.Invoke(currentExp, maxExp);
-        if (currentExp >= maxExp && currentLvl < 5)
+        if (currentExp >= maxExp && currentLvl != 5)
         {
             LevelUp();
         }
@@ -68,28 +68,27 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     private void LevelUp()
     {
-        
-        //Handle the level up
-        maxHealth += 50;
-        currentHealth = maxHealth;
-        healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
-        currentLvl++;
-        Debug.Log("Level Up: " + currentLvl);
+            //Handle the level up
+            maxHealth += 50;
+            currentHealth = maxHealth;
+            healthBar.UpdateHealthBar(currentHealth, maxHealth);
 
-        currentExp = currentExp - maxExp;
-        maxExp = 300 + (50 * currentLvl) + (10 * currentLvl * currentLvl);
+            currentLvl++;
+            Debug.Log("Level Up: " + currentLvl);
 
-        OnLevelUp?.Invoke(currentLvl);
-        OnExpUpdate?.Invoke(currentExp, maxExp);
-        if (currentLvl == 2)
-        {
-            playerBullet.GetComponent<PlayerBullet>().Damage = 100;
-            autoWeapon.ReloadSpeed = .6f;
-        }
+            currentExp = currentExp - maxExp;
+            maxExp = 300 + (50 * currentLvl) + (10 * currentLvl * currentLvl);
 
+            OnLevelUp?.Invoke(currentLvl);
+            OnExpUpdate?.Invoke(currentExp, maxExp);
+            if (currentLvl == 2)
+            {
+                playerBullet.GetComponent<PlayerBullet>().Damage = 100;
+                autoWeapon.ReloadSpeed = .6f;
+            }
     }
-    
+
     public void Heal(float healAmount)
     {
         currentHealth += healAmount;
@@ -111,11 +110,5 @@ public class PlayerStats : MonoBehaviour, IDamageable
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            LevelUp();
-        }
-    }
+    
 }

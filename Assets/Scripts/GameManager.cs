@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     public void ResetGame()
     {
         gameOverPanel.SetActive(false);
