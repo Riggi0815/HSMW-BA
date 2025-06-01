@@ -89,4 +89,15 @@ public class CSVWriter : MonoBehaviour
         }
     }
 
+    public void WriteDeathLine(float wave)
+    {
+        if (logEnabled)
+        {
+            TextWriter tw = new StreamWriter(fileName, true);
+            tw.WriteLine($"Survived Till Wave; {wave}");
+            tw.WriteLine();
+            tw.Close();
+        }
+    }
+
 }

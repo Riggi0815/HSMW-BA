@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         gameOverText.text = $"Bis Welle {WaveManager.Instance.CurrentWave} überlebt";
+        CSVWriter.Instance.WriteDeathLine(WaveManager.Instance.CurrentWave);
         Time.timeScale = 0f;
     }
 
