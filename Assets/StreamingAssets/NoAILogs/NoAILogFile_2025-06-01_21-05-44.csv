@@ -1,0 +1,4 @@
+WaveCount; EnemyType; EnemyCount; EnemyHealth; EnemySpeed; EnemyAttackDamage; EnemyAttackSpeed; EnemyProjectileSpeed; PlayerMaxHealth; PlayerCurrentHealth
+1; ExposionEnemy; 5; 200; 3; 30; 0; 0; 100; 100
+1; ShootingEnemy; 3; 150; 3; 20; 0; 7; 100; 100
+1; SprayEnemie; 2; 100; 2; 10; 1,5; 7; 100; 100

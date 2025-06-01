@@ -31,7 +31,7 @@ public class CSVWriter : MonoBehaviour
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
 
             // Create a logs directory inside persistentDataPath (this is better than dataPath)
-            logDirectory = Path.Combine(Application.persistentDataPath, "NoAILogs");
+            logDirectory = Path.Combine(Application.streamingAssetsPath, "NoAILogs");
 
             // Create directory if it doesn't exist
             if (!Directory.Exists(logDirectory))
