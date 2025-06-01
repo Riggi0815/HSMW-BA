@@ -55,7 +55,7 @@ public class CSVWriter : MonoBehaviour
             {
                 using (TextWriter tw = new StreamWriter(fileName, false))
                 {
-                    tw.WriteLine("WaveCount; EnemyType; EnemyCount; EnemyHealth; EnemySpeed; EnemyAttackDamage; EnemyAttackSpeed; EnemyProjectileSpeed; PlayerMaxHealth; PlayerCurrentHealth");
+                    tw.WriteLine("WaveCount; EnemyType; EnemyCount; EnemyHealth; EnemySpeed; EnemyAttackDamage; EnemyAttackSpeed; EnemyProjectileSpeed; PlayerMaxHealth; PlayerCurrentHealth; PlayerLevel");
                 }
                 Debug.Log($"CSV log file created at: {fileName}");
             }
@@ -67,12 +67,12 @@ public class CSVWriter : MonoBehaviour
 
     }
 
-    public void WriteCSVLine(int waveCount, string enemyType, int enemyCount, float enemyHealth, float enemySpeed, float enemyAttackDamage, float enemyAttackSpeed, float enemyProjectileSpeed, int playerMaxHealth, int playerCurrentHealth)
+    public void WriteCSVLine(int waveCount, string enemyType, int enemyCount, float enemyHealth, float enemySpeed, float enemyAttackDamage, float enemyAttackSpeed, float enemyProjectileSpeed, int playerMaxHealth, int playerCurrentHealth, int playerCurrentLevel)
     {
         if (logEnabled)
         {
             TextWriter tw = new StreamWriter(fileName, true);
-            tw.WriteLine($"{waveCount}; {enemyType}; {enemyCount}; {enemyHealth}; {enemySpeed}; {enemyAttackDamage}; {enemyAttackSpeed}; {enemyProjectileSpeed}; {playerMaxHealth}; {playerCurrentHealth}");
+            tw.WriteLine($"{waveCount}; {enemyType}; {enemyCount}; {enemyHealth}; {enemySpeed}; {enemyAttackDamage}; {enemyAttackSpeed}; {enemyProjectileSpeed}; {playerMaxHealth}; {playerCurrentHealth}; {playerCurrentLevel}");
             tw.Close();
         }
 
