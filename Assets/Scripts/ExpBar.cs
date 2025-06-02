@@ -53,7 +53,7 @@ public class ExpBar : MonoBehaviour
             {
                 upgradeTexts[i].SetActive(false);
             }
-        }else if (currentLvl < 5)
+        }else if (currentLvl <= 5)
         {
             upgradeTexts[(int)currentLvl - 1].SetActive(true);
         }

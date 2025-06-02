@@ -156,6 +156,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         if (Spawner.Instance.transform.childCount - 1  == 0 && Spawner.Instance.ObjectsToSpawn.Count == 0)
             {
                 CSVWriter.Instance.WriteDamageLine(player.GetComponent<PlayerStats>().DamageTakenLastWave);
+                player.GetComponent<PlayerStats>().DamageTakenLastWave = 0;
                 WaveManager.Instance.PrepareNextWave();
             }
     }

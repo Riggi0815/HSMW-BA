@@ -81,7 +81,7 @@ public class WaveManager : MonoBehaviour
     {
         if (currentWave < waves.Length)
         {
-            playerStats.Heal(50);
+            playerStats.Heal(50 + 10 * currentWave);
             Invoke("SpawnNewWave", betwenWaveTime);
         }
         else
