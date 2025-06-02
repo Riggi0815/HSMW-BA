@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameCompletePanel;
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject bulletHolder;
     [SerializeField] private GameObject spawner;
     [SerializeField] private WeaponManager weaponManager;
@@ -28,6 +29,14 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
         }
     }
 
@@ -70,5 +79,21 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerStats>().CurrentLvl = 0;
         Spawner.Instance.Reset();
 
+    }
+    
+    public void PauseGame()
+    {
+        if (Time.timeScale == 1f)
+        {
+            Time.timeScale = 0f;
+            gamePanel.SetActive(false);
+            pausePanel.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            gamePanel.SetActive(true);
+            pausePanel.SetActive(false);
+        }
     }
 }

@@ -6,6 +6,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private Camera gameCamera;
     [SerializeField] private GameObject gameUI;
     [SerializeField] private GameObject menuUI;
+    [SerializeField] private GameObject pauseUI;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class SceneManager : MonoBehaviour
         menuCamera.gameObject.SetActive(true);
         gameCamera.gameObject.SetActive(false);
         gameUI.SetActive(false);
+        pauseUI.SetActive(false);
         menuUI.SetActive(true);
     }
 }
